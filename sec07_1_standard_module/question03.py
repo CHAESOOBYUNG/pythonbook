@@ -1,0 +1,17 @@
+# 모듈을 읽어 들입니다.
+import os
+
+# 폴더를 읽어들이는 함수
+def read_folder(path):
+    # 폴더의 요소를 읽어들이기
+    output = os.listdir(path)
+    # 폴더의 요소 구분하기
+    for item in output:
+        if os.path.isdir(item):
+            # 폴더라면 계속 읽어들이기
+            read_folder(path + "/" + item)
+        else:
+            # 파일이라면 출력하기
+            print("파일: ", item)
+
+read_folder(".")
